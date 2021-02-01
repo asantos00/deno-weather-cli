@@ -4,9 +4,7 @@ import { WeatherResponse } from "./types.ts";
 
 const { city, units } = parse(Deno.args);
 
-const unitArgs = ((units === undefined) ? "standard" : units)
-
-const [ passes, errors] = await validate({city, unitArgs}, {
+const [ passes, errors] = await validate({city, unitArgs : 'standard' || units }, {
   city: [required, isString],
   unitArgs: [isIn(["metric", "imperial", "standard"])]
 })
